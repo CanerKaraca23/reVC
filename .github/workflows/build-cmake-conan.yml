@@ -42,22 +42,22 @@ jobs:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.platform == 'ps2' || matrix.gl3_gfxlib == 'sdl2' || matrix.audio == 'miles' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: true
       - name: "Checkout Miles SDK Import Library project"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         if: ${{ matrix.audio == 'miles' }}
         with:
           repository: 'withmorten/re3mss'
           path: 're3mss'
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - name: "Use XCode 11 as default (conan-center-index does not provide XCode 12 binaries at the moment)"
+      - name: "Use XCode 26 as default (conan-center-index does not provide XCode 27 binaries at the moment)"
         if: startsWith(matrix.os, 'macos')
         run: |
-          sudo xcode-select --switch /Applications/Xcode_11.7.app
+          sudo xcode-select --switch /Applications/Xcode_26.6.app
       - name: "Setup conan"
         run: |
           python -m pip install conan
@@ -110,7 +110,7 @@ jobs:
         run: |
           cpack -C RelWithDebInfo
       - name: "Archive binary package (github artifacts)"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: "${{ matrix.os }}-${{ matrix.platform }}"
           path: build/*.tar.xz
