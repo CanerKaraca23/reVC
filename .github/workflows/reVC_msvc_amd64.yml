@@ -35,7 +35,10 @@ jobs:
     - name: Configure build
       run: |
         ./premake5 vs2026 --with-librw --no-full-paths --glfwdir64=${{env.GLFW_BASE}}
-    - name: Build
+    - name: Build librw
+      run: |
+        msbuild -m build/librw.vcxproj /property:Configuration="${{matrix.buildtype}} ${{matrix.platform}}" /property:Platform=x64
+    - name: Build reVC
       run: |
         msbuild -m build/reVC.vcxproj /property:Configuration="${{matrix.buildtype}} ${{matrix.platform}}" /property:Platform=x64
     # - name: Pack artifacts
