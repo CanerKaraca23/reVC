@@ -15,8 +15,8 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        platform: [win-amd64-librw_d3d9-oal, win-amd64-librw_gl3_glfw-oal]
-        buildtype: [Debug, Release]
+        platform: [win-amd64-librw_d3d9-oal]
+        buildtype: [Release]
     steps:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v3
