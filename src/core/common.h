@@ -397,7 +397,7 @@ template<int s, int t> struct check_size {
 #define BIT(num)                         (1<<(num))
 
 #define ABS(a)  (((a) < 0) ? (-(a)) : (a))
-#define norm(value, min, max) (((value) < (min)) ? 0 : (((value) > (max)) ? 1 : (((value) - (min)) / ((max) - (min)))))
+#define norm_val(value, min, max) (((value) < (min)) ? 0 : (((value) > (max)) ? 1 : (((value) - (min)) / ((max) - (min)))))
 #define lerp(norm, min, max) ( (norm) * ((max) - (min)) + (min) )
 
 #define STRINGIFY(x)                    #x

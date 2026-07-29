@@ -213,7 +213,7 @@ project "librw"
 	filter "platforms:win*"
 		defines { "_CRT_SECURE_NO_WARNINGS", "_CRT_NONSTDC_NO_DEPRECATE" }
 		staticruntime "on"
-		buildoptions { "/Zc:sizedDealloc-" }
+		buildoptions { "/Zc:sizedDealloc-", "/Zc:strictStrings-", "/permissive" }
 
 	filter "platforms:bsd*"
 		includedirs { "/usr/local/include" }
@@ -344,7 +344,7 @@ project "reVC"
 	filter "platforms:win*"
 		files { addSrcFiles("src/skel/win") }
 		includedirs { "src/skel/win" }
-		buildoptions { "/Zc:sizedDealloc-" }
+		buildoptions { "/Zc:sizedDealloc-", "/Zc:strictStrings-", "/permissive" }
 		linkoptions "/SAFESEH:NO"
 		characterset ("MBCS")
 		targetextension ".exe"
